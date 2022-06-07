@@ -1,0 +1,11 @@
+API WEB SERVICE 
+
+Pour lancer l'application et faut supprimer les protocoles cors de google chrome:
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+plus d'informations :
+https://alfilatov.com/posts/run-chrome-without-cors/
+
+l'api se connecte à deux interfaces, un utilisateur et un métier.
+l'interface utilisateur est totalement fonctionelle, nous l'avons conçu en faisant appel à deux api, celle de google map et celle des centres de vaccinations.
+Si l'utilisateur souhaite plus d'information, il peut remplir un formulaire pour etre recontacté par nos conseillers, une fois ce formulaire rempli, il sera directement envoyer à notre api pour etre stocké
+l'interface métier n'est malheureusement pas totalement fonctionnel, il aurait du permettre de lister toutes les demandes d'aide avec les différents informations, pouvoir modifier les informations sur les utilisateurs ( principalement en ajoutant un commentaire e.g "à rappeler dans 2h") ou supprimer la requete une fois qu'elle a été effectuée.

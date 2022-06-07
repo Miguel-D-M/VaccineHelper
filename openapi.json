@@ -1,0 +1,157 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0",
+    "title": "Vaccination Assistance API"
+  },
+  "servers": [
+    {
+      "url": "http:/localhost:8080"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "appointment": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "sex": {
+            "type": "string"
+          },
+          "age": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/appointments": {
+      "get": {
+        "tags": [
+          "appointment"
+        ],
+        "summary": "Get all the appointments",
+        "description": "Send back a json file with all the appointment requested",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/appointment"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "No appointment"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "appointment"
+        ],
+        "summary": "create an appointment",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/appointments/{id}": {
+      "put": {
+        "tags": [
+          "appointment"
+        ],
+        "summary": "Update an appointment",
+        "description": "Send a json file with the update informations",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "appointment"
+        ],
+        "summary": "delete an appointment",
+        "description": "delete tha appointment from the db",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
